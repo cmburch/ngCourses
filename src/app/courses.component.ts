@@ -16,7 +16,10 @@ import { Component } from '@angular/core';
                 </tr>
             </table>
         </ul>
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary" [class.active]="isActive">Save</button>
+        <button (click)="onSave()">Click</button>
+        <button (click)="onSave1($event)">Click2</button>
+        
         `
 })
 
@@ -24,10 +27,18 @@ export class CoursesComponent{
     title:string = 'List of Courses';
     courses;
     imageUrl ="http://ncaa06revival.com/wp-content/uploads/2016/11/bradleys-book-outlet-books-only-logo.png";
+    isActive = "true";
 
     constructor(service:CoursesService){
         //not losely couple bad practice below
         // let service = new CoursesService();
         this.courses = service.getCourse();
+    }
+
+    onSave(){
+        console.log("hello");
+    }
+    onSave1($event){
+        console.log("Button was clicked", $event);
     }
 }
