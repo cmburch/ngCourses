@@ -10,7 +10,13 @@ import { Component } from '@angular/core';
                 {{course}}
             </li>
             <img [src] ="imageUrl" />
+            <table>
+                <tr>
+                    <td [attr.colspan]="colspan"></td>
+                </tr>
+            </table>
         </ul>
+        <button class="btn btn-primary">Save</button>
         `
 })
 
