@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 @Component({
     selector:'courses',
     template: `
-        <h2>{{title}}</h2>
+        <h2>{{title | summary }}</h2>
+        <h2>{{subtitle | summary:20 }}</h2>
+        
         <ul>
             <li *ngFor="let course of courses">
                 {{course}}
@@ -26,11 +28,17 @@ import { Component } from '@angular/core';
         <br>
         <label>event2</label>
         <input (keyup.enter)="onKeyUpEvent($event)"/>
+
+        <br>
+        <label>event3</label>
+        <input [(ngModel)]="email" (keyup.enter)="onKeyUpEvent3($event)"/>
         `
 })
 
 export class CoursesComponent{
     title:string = 'List of Courses';
+    subtitle:string="The subtile is way to long to fit this line"
+    email:string;
     courses;
     imageUrl ="http://ncaa06revival.com/wp-content/uploads/2016/11/bradleys-book-outlet-books-only-logo.png";
     isActive = "true";
@@ -51,6 +59,9 @@ export class CoursesComponent{
         console.log("enter was pressed");
     }
     onKeyUpEvent($event){
-        console.log("Button was clicked", $event);
+        console.log("Button was clicked", $event.target.value);
+    }
+    onKeyUpEvent3($event){
+        console.log("Button was clicked", this.email);
     }
 }
