@@ -32,12 +32,20 @@ import { Component } from "@angular/core";
         </li>
     </ul>
 
+    <button (click)="loadCourses()">Load Courses</button>    
+    <ul>
+    <li *ngFor="let subject of classesSub">
+        {{subject}}
+    </li>
+    <
+</ul>
     `
 })
 
 export class appDirectivesEx{
 
     courses:number[] = [1,2,3];
+    newCourse;
 
     classes = [
         {id:1,name:'course1'},
@@ -55,5 +63,12 @@ export class appDirectivesEx{
     }
     onUpdate(subject){
         subject.name = "UPDATED";
+    }
+    loadCourses(){
+        this.newCourse =[
+            {id:1,name:'course1'},
+            {id:2,name:'course2'},
+            {id:3,name:'course3'}
+        ]
     }
 }
