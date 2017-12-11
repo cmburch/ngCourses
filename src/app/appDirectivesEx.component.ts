@@ -12,20 +12,43 @@ import { Component } from "@angular/core";
     </div>
 
     <ul class="nav nav-pills">
-        <li [class.active]="viewMode =='map'"><a (click)="viewMode =='map'"href="">Map View</a></li>
-        <li [class.active]="viewMode =='list'"><a (click)="viewMode =='list'" href="">List View</a></li>
+        <li [class.active]="viewMode =='map'"><a (click)="viewMode = 'map'">Map View</a></li>
+        <li [class.active]="viewMode =='list'"><a (click)="viewMode = 'list'" >List View</a></li>
     </ul>
     <div [ngSwitch]="viewMode">
         <div *ngSwitchCase="'map'">Map View Content</div>
         <div *ngSwitchCase="'list'">List View Content</div>
         <div *ngSwitchDefault>Defaultt</div>
         
-    </div>    
+    </div> 
+    
+    <button (click)="onAdd()">Add</button>
+    <ul>
+        <li *ngFor="let subject of classes;index as i;even as isEven">
+        {{i}} - {{subject.name}}<span *ngIf = "isEven">(EVEN)</span>
+        <button (click)="onRemove(subject)">Remove</button>        
+        </li>
+    </ul>
 
     `
 })
 
 export class appDirectivesEx{
-    courses:number[] = [];
+
+    courses:number[] = [1,2,3];
+
+    classes = [
+        {id:1,name:'course1'},
+        {id:2,name:'course2'},
+        {id:3,name:'course3'}
+        
+    ]
     viewMode:string = "map";
+    onAdd(){
+        this.classes.push({id:4,name:'course4'})
+    }
+    onRemove(subject){
+        let index = this.classes.indexOf(subject);
+        this.classes.splice(index,1);
+    }
 }
