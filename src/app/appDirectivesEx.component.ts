@@ -26,7 +26,9 @@ import { Component } from "@angular/core";
     <ul>
         <li *ngFor="let subject of classes;index as i;even as isEven">
         {{i}} - {{subject.name}}<span *ngIf = "isEven">(EVEN)</span>
-        <button (click)="onRemove(subject)">Remove</button>        
+        <button (click)="onRemove(subject)">Remove</button>  
+        <button (click)="onUpdate(subject)">Update</button>        
+        
         </li>
     </ul>
 
@@ -50,5 +52,8 @@ export class appDirectivesEx{
     onRemove(subject){
         let index = this.classes.indexOf(subject);
         this.classes.splice(index,1);
+    }
+    onUpdate(subject){
+        subject.name = "UPDATED";
     }
 }
