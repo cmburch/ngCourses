@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses.component';
 import { CoursesService } from './courses.service';
 import { appDirectivesEx } from './appDirectivesEx.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoursesComponent,
     SummaryPipe,
-    appDirectivesEx
+    appDirectivesEx,
+    ContactFormComponent
 
   ],
   imports: [

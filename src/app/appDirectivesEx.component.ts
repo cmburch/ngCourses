@@ -34,7 +34,7 @@ import { Component } from "@angular/core";
 
     <button (click)="loadCourses()">Load Courses</button>    
     <ul>
-    <li *ngFor="let subject of classesSub">
+    <li *ngFor="let subject of classesSub;trackBy:trackCourse">
         {{subject}}
     </li>
     <
@@ -71,4 +71,8 @@ export class appDirectivesEx{
             {id:3,name:'course3'}
         ]
     }
+    trackCourse(index,course){
+        return course? course.id : undefined;
+    }
 }
+
