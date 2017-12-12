@@ -1,13 +1,13 @@
 <form>
-
   <div>
-    <label for="firstName"></label>
-    <input id='firstName' type="‘text’" class="form-control">
+    <label for="firstName">First Name</label>
+    <input required ngModel name='firstName' id='firstName' type="'text'" #firstName='ngModel' (change)="log(firstName)" class="form-control">
+<div class="alert alert-danger" *ngIf="!firstName.valid">First name is required</div>
   </div>
 
   <div class="formgroup">
-    <label for="comment"></label>
+    <label for="comment">Comment</label>
     <textarea name="" id="comment" cols="30" rows="10" class="form-control"></textarea>
   </div>
-  
+  <button class="btn btn-primary">Submit</button>
 </form>
